@@ -5,7 +5,11 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     const selectQuery = `
-        SELECT * FROM reviews;
+        SELECT	score,
+                content,
+                createdAt
+        FROM  reviews
+        ORDER 	BY content ASC;
     `;
     try {
         db.query(selectQuery, (err, reviews) => {
